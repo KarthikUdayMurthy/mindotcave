@@ -1,0 +1,20 @@
+<div class="dpOverlay" *ngIf="dserv.isDatepicker">
+	<div class="dpWrap">
+		<div class="dpCol">
+			<button class="iBtn" (click) = "plusDay()"> + </button>
+			<div class="iDiv">{{dd}}</div>
+			<button class="iBtn" (click) = "lessDay()"> - </button>
+		</div>
+		<div class="dpCol">
+			<button class="iBtn" (click) = "plusMonth()"> + </button>
+			<div class="iDiv">{{mmm}}</div>
+			<button class="iBtn" (click) = "lessMonth()"> - </button>
+		</div>
+		<div class="dpCol">
+			<button class="iBtn" (click) = "plusYear()"> + </button>
+			<div class="iDiv">{{yyyy}}</div>
+			<button class="iBtn" (click) = "lessYear()"> - </button>
+		</div>
+		<button class="setBtn" (click)="hideDatepicker()">Set Date</button>
+	</div>
+</div>

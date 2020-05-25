@@ -1,0 +1,129 @@
+.dashboardWrap {
+  background: transparent;
+  flex: 15 15 auto;
+  padding: 8px;
+}
+
+.zeroCards {
+  text-align: center;
+  color: rgb(1, 36, 151);
+}
+
+.cardsWrap {
+  display: grid;
+  -webkit-display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  padding: 8px;
+  background: #eee;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.cardsWrap::-webkit-scrollbar {
+  display: block !important;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+}
+
+.cardsWrap::-webkit-scrollbar-thumb {
+  background: #6e6e6e;
+  border-radius: 20px;
+  border: 0px;
+}
+
+.cardLink {
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: #3f51b5;
+  background: linear-gradient(to bottom right, #a3a3a3, #7e7e7e);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cardLink.sel {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0,.14), 0 7px 10px -5px rgba(0, 172, 193,.4);
+  color: #ffffff;
+  background: #3f51b5;
+  background: linear-gradient(-45deg, #00bcd4, #3f51b5);
+  background: linear-gradient(-41deg, rgba(107, 107, 107, 0.04) 0%, rgba(107, 107, 107, 0.04) 8%,rgba(31, 31, 31, 0.04) 8%, rgba(31, 31, 31, 0.04) 100%),linear-gradient(9deg, rgba(228, 228, 228, 0.04) 0%, rgba(228, 228, 228, 0.04) 62%,rgba(54, 54, 54, 0.04) 62%, rgba(54, 54, 54, 0.04) 100%),linear-gradient(124deg, rgba(18, 18, 18, 0.04) 0%, rgba(18, 18, 18, 0.04) 37%,rgba(233, 233, 233, 0.04) 37%, rgba(233, 233, 233, 0.04) 100%),linear-gradient(253deg, rgba(201, 201, 201, 0.04) 0%, rgba(201, 201, 201, 0.04) 55%,rgba(47, 47, 47, 0.04) 55%, rgba(47, 47, 47, 0.04) 100%),linear-gradient(270deg, rgba(172, 172, 172, 0.04) 0%, rgba(172, 172, 172, 0.04) 33%,rgba(26, 26, 26, 0.04) 33%, rgba(26, 26, 26, 0.04) 100%),linear-gradient(64deg, rgba(11, 11, 11, 0.04) 0%, rgba(11, 11, 11, 0.04) 38%,rgba(87, 87, 87, 0.04) 38%, rgba(87, 87, 87, 0.04) 100%),linear-gradient(347deg, rgba(199, 199, 199, 0.04) 0%, rgba(199, 199, 199, 0.04) 69%,rgba(4, 4, 4, 0.04) 69%, rgba(4, 4, 4, 0.04) 100%),linear-gradient(313deg, rgba(36, 36, 36, 0.04) 0%, rgba(36, 36, 36, 0.04) 20%,rgba(91, 91, 91, 0.04) 20%, rgba(91, 91, 91, 0.04) 100%),linear-gradient(-90deg, rgb(10, 17, 72),rgb(35, 148, 228));
+}
+
+.nameDiv {
+  font-size: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.optionsWrap {
+  display: flex;
+  -webkit-display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0px;
+  padding-top: 8px;
+  margin: 0px
+}
+
+.optionsWrap div {
+  border: 0px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 18px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  margin-right: 12px;
+  background: rgba(0, 0, 0, 0.66);
+}
+
+.optionsWrap div:last-child {  
+  margin-right: 0px;
+}
+
+.optionsWrap div:active {
+  transform: scale(0.8);
+}
+
+.viewBtn, .editBtn {
+  color:#cff;
+  text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.6);
+}
+
+.deleteBtn {
+  color:#fcc;
+  text-shadow: 0px 0px 10px rgba(255, 185, 0, 0.6);
+}
+
+.addBtn {
+  width: 100%;
+  margin: 8px 0px;
+  outline: 0;
+  border: 0;
+  padding: 10px 12px;
+  background: #3f51b5;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 18px;
+  font-family: 'Montserrat', 'Sans Serif';
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  cursor: pointer;
+}
+
+.addBtn:active {
+  transform: scale(0.92);
+}
+
+.addBtn:disabled {
+  background: #bbbbbb;
+  cursor: not-allowed;
+  color: #505050;
+}

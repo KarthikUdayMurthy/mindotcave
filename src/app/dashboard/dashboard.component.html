@@ -1,0 +1,20 @@
+<div class="dashboardWrap">
+	<p class="zeroCards" *ngIf="this.cards.length === 0">
+		<i class="fa fa-exclamation-circle"></i> No cards created yet!
+	</p>
+	<div class="cardsWrap" *ngIf="this.cards.length > 0">
+		<div *ngFor="let c of cards; let i = index" class="cardLink" [class.sel]="cardServ.selectedCardIndex === i" (click)="goToCard(i)">
+			<div class="nameDiv">{{c.fullName || "No Name"}}</div>
+			{{c.title || "No Job Title"}}
+			<div class="optionsWrap">
+				<div class="viewBtn" (click)="goToCard(i)"><i class="fa fa-user"></i></div>
+				<div class="editBtn" (click)="goToEditor(i, $event)"><i class="fa fa-pencil"></i></div>
+				<div class="deleteBtn" (click)="deleteCard(i, $event)"><i class="fa fa-trash"></i></div>
+			</div>
+		</div>
+	</div>
+	<button class="addBtn" (click) = "addCard()" [disabled] = "cardServ.cards.length >= 4">
+    <span *ngIf="cardServ.cards.length < 4"><i class="fa fa-plus"></i>&nbsp;Add New Card</span>
+    <span *ngIf="cardServ.cards.length >= 4">Maximum 4 Cards</span>
+  </button>
+</div>

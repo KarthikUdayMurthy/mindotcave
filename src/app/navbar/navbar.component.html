@@ -1,0 +1,15 @@
+<div class="navWrap">
+	<div class="navItem" [routerLink]="['/card']" routerLinkActive="active">
+		<div class="iconWrap" *ngIf="cardServ.selectedCardIndex !== null">
+			<i class="icon fa fa-user"></i>
+		</div>
+	</div>
+	<div class="brand" [routerLink]="['/home']" routerLinkActive="active">
+    <span class="logoText">Mind&nbsp;&nbsp;</span><i class="icon fa fa-graduation-cap"></i><span class="logoText">&nbsp;&nbsp;Cave</span>
+  </div>
+	<div class="navItem" [routerLink]="['/editor']" routerLinkActive="active">
+		<div class="iconWrap" *ngIf="cardServ.selectedCardIndex !== null">
+			<i class="icon fa fa-pencil"></i>
+		</div>
+	</div>
+</div>
