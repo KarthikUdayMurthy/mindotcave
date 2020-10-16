@@ -23,6 +23,11 @@ export class DashboardComponent implements OnInit {
 
   goToCard(ind) {
     this.cardServ.selectedCardIndex = ind;
+    this.cardServ.cardViewStatus = {
+      side: "front",
+      detailType: "",
+      detailOrg: ""
+    };
     this.router.navigateByUrl("/card");
   }
 
@@ -52,7 +57,7 @@ export class DashboardComponent implements OnInit {
   deleteCard(ind, ev) {
     ev.stopPropagation();
     this.cardServ.cards.splice(ind, 1);
-    if(this.cardServ.selectedCardIndex === ind) {
+    if (this.cardServ.selectedCardIndex === ind) {
       this.cardServ.selectedCardIndex = null;
     }
   }

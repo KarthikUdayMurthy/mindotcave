@@ -1,73 +1,187 @@
 <div class="editorWrap swiper-container">
-	<div class="formsWrap swiper-wrapper">
-		<div class="swiper-slide form form1">
+  <div class="formsWrap swiper-wrapper">
+    <div class="swiper-slide form form1">
       <div class="slideHdr">Primary Details</div>
       <div class="formWrap">
-        <input type="text" class="i1" placeholder="Full Name" [(ngModel)] = "this.card.fullName"/>
-        <input type="text" class="i1" placeholder="Job Title" [(ngModel)] = "this.card.title"/>
-        <input type="email" class="i1" placeholder="Email Address" [(ngModel)] = "this.card.email"/>
-        <input type="number" class="i1" placeholder="Mobile Number" [(ngModel)] = "this.card.phone"/>
+        <input
+          type="text"
+          class="i1"
+          placeholder="Full Name"
+          [(ngModel)]="this.card.fullName"
+        />
+        <input
+          type="text"
+          class="i1"
+          placeholder="Job Title"
+          [(ngModel)]="this.card.title"
+        />
+        <input
+          type="email"
+          class="i1"
+          placeholder="Email Address"
+          [(ngModel)]="this.card.email"
+        />
+        <input
+          type="number"
+          class="i1"
+          placeholder="Mobile Number"
+          [(ngModel)]="this.card.phone"
+        />
       </div>
     </div>
-		<div class="swiper-slide form form2">
+    <div class="swiper-slide form form2">
       <div class="slideHdr">Key Skills</div>
       <div class="formWrap" #skillForm>
-        <div *ngFor="let s of this.card.skills; let i = index" class="skillForm">
-          <input type="text" class="i1 sName" placeholder="Skill" [(ngModel)] = "s.name"/>
-          <input type="text" class="i1 sPct" placeholder="%" [(ngModel)] = "s.strength"/>
-          <button class="b1" (click) = "removeSkill(i)"><i class="fa fa-trash"></i></button>
+        <div
+          *ngFor="let s of this.card.skills; let i = index"
+          class="skillForm"
+        >
+          <input
+            type="text"
+            class="i1 sName"
+            placeholder="Skill"
+            [(ngModel)]="s.name"
+          />
+          <input
+            type="text"
+            class="i1 sPct"
+            placeholder="%"
+            [(ngModel)]="s.strength"
+          />
+          <button class="b1" (click)="removeSkill(i)">
+            <i class="fa fa-trash"></i>
+          </button>
         </div>
       </div>
-        <button class="b2 addNew" (click) = "addSkill()" [disabled] = "card.skills.length >= 8">
-          <span *ngIf="card.skills.length < 8"><i class="fa fa-plus"></i> Add Skill</span>
-          <span *ngIf="card.skills.length >= 8">Maximum 8 skills</span>
-        </button>
+      <button
+        class="b2 addNew"
+        (click)="addSkill()"
+        [disabled]="card.skills.length >= 8"
+      >
+        <span *ngIf="card.skills.length < 8"
+          ><i class="fa fa-plus"></i> Add Skill</span
+        >
+        <span *ngIf="card.skills.length >= 8">Maximum 8 skills</span>
+      </button>
     </div>
-		<div class="swiper-slide form form3">
+    <div class="swiper-slide form form3">
       <div class="slideHdr">
-        <span *ngIf = "!experienceEdit">Experience</span>
-        <button *ngIf = "experienceEdit" class="b1 doneBtn" (click) = "saveExp()"><i class="fa fa-check"></i>&nbsp;Done</button>
-        <button *ngIf = "experienceEdit" class="b1 deleteBtn" (click) = "removeExp()"><i class="fa fa-trash"></i>&nbsp;Delete</button>
-      </div>      
-      <div class="formWrap" *ngIf = "!experienceEdit && this?.swiper?.activeIndex == 2">
-        <div *ngFor="let e of this.card.experience; let i = index" class="expItem">
+        <span *ngIf="!experienceEdit">Experience</span>
+        <button *ngIf="experienceEdit" class="b1 doneBtn" (click)="saveExp()">
+          <i class="fa fa-check"></i>&nbsp;Done
+        </button>
+        <button
+          *ngIf="experienceEdit"
+          class="b1 deleteBtn"
+          (click)="removeExp()"
+        >
+          <i class="fa fa-trash"></i>&nbsp;Delete
+        </button>
+      </div>
+      <div
+        class="formWrap"
+        *ngIf="!experienceEdit && this?.swiper?.activeIndex == 2"
+      >
+        <div
+          *ngFor="let e of this.card.experience; let i = index"
+          class="expItem"
+        >
           <div class="expDet">
-            <span class="esis">{{e.orgName}}</span><br>
+            <span class="esis">{{e.orgName}}</span><br />
             <span>{{e.fromDate}} - {{e.toDate | customDate}}</span>
           </div>
-          <button class="b1" (click) = "editExp(i)"><i class="fa fa-pencil"></i></button>
-          <button class="b1" (click) = "removeExp(i)"><i class="fa fa-trash"></i></button>
+          <button class="b1" (click)="editExp(i)">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button class="b1" (click)="removeExp(i)">
+            <i class="fa fa-trash"></i>
+          </button>
         </div>
-      </div>      
-      <div class="formWrap expForm" [class.formNotValid] = "!expFormValid" *ngIf = "experienceEdit">
-        <input type="text" class="i1" placeholder = "Org. Name" [(ngModel)] = "experienceEditItem.orgName" required/>
+      </div>
+      <div
+        class="formWrap expForm"
+        [class.formNotValid]="!expFormValid"
+        *ngIf="experienceEdit"
+      >
+        <input
+          type="text"
+          class="i1"
+          placeholder="Org. Name"
+          [(ngModel)]="experienceEditItem.orgName"
+          required
+        />
         <div class="expGrid">
-          <input type="text" class="i1 expFormFromDate" (mDatepicker) = "experienceEditItem.fromDate = $event" [(ngModel)] = "experienceEditItem.fromDate" placeholder = "From(MM/DD/YYYY)" required/>
-          <input type="text" class="i1 expFormToDate" (mDatepicker) = "experienceEditItem.toDate = $event" [(ngModel)] = "experienceEditItem.toDate" placeholder = "To(MM/DD/YYYY)" [disabled] = "experienceEditItem.toDate === 'NA'" required/>
-
+          <input
+            type="text"
+            class="i1 expFormFromDate"
+            (mDatepicker)="experienceEditItem.fromDate = $event"
+            [(ngModel)]="experienceEditItem.fromDate"
+            placeholder="From(MM/DD/YYYY)"
+            required
+          />
+          <input
+            type="text"
+            class="i1 expFormToDate"
+            (mDatepicker)="experienceEditItem.toDate = $event"
+            [(ngModel)]="experienceEditItem.toDate"
+            placeholder="To(MM/DD/YYYY)"
+            [disabled]="experienceEditItem.toDate === 'NA'"
+            required
+          />
         </div>
-        <textarea class="i1" placeholder = "Role Description" [(ngModel)] = "experienceEditItem.details" required></textarea>
+        <textarea
+          class="i1"
+          placeholder="Role Description"
+          [(ngModel)]="experienceEditItem.details"
+          required
+        ></textarea>
         <div class="expGrid">
-          <label class="b1 checkBtn" [class.active] = "experienceEditItem.isRelevant" (click) = "experienceEditItem.isRelevant = !experienceEditItem.isRelevant">
-            <span *ngIf = "!experienceEditItem.isRelevant"><i class="fa fa-square-o"></i>&nbsp;Relevant</span>
-            <span *ngIf = "experienceEditItem.isRelevant"><i class="fa fa-check-square"></i>&nbsp;Relevant</span>
+          <label
+            class="b1 checkBtn"
+            [class.active]="experienceEditItem.isRelevant"
+            (click)="experienceEditItem.isRelevant = !experienceEditItem.isRelevant"
+          >
+            <span *ngIf="!experienceEditItem.isRelevant"
+              ><i class="fa fa-square-o"></i>&nbsp;Relevant</span
+            >
+            <span *ngIf="experienceEditItem.isRelevant"
+              ><i class="fa fa-check-square"></i>&nbsp;Relevant</span
+            >
           </label>
-          <label class="b1 checkBtn" [class.active] = "experienceEditItem.toDate === 'NA'" (click) = "toggleExpCurrentStatus()">
-            <span *ngIf = "experienceEditItem.toDate !== 'NA'"><i class="fa fa-square-o"></i>&nbsp;Current</span>
-            <span *ngIf = "experienceEditItem.toDate === 'NA'"><i class="fa fa-check-square"></i>&nbsp;Current</span>
+          <label
+            class="b1 checkBtn"
+            [class.active]="experienceEditItem.toDate === 'NA'"
+            (click)="toggleExpCurrentStatus()"
+          >
+            <span *ngIf="experienceEditItem.toDate !== 'NA'"
+              ><i class="fa fa-square-o"></i>&nbsp;Current</span
+            >
+            <span *ngIf="experienceEditItem.toDate === 'NA'"
+              ><i class="fa fa-check-square"></i>&nbsp;Current</span
+            >
           </label>
           <!-- <button class="b1" (click) = "saveExp()"><i class="fa fa-check"></i>&nbsp;Done</button> -->
         </div>
       </div>
-      <button class="b2 addNew" (click) = "addExp()" *ngIf = "!experienceEdit"><i class="fa fa-plus"></i> Add Experience</button>
+      <button class="b2 addNew" (click)="addExp()" *ngIf="!experienceEdit">
+        <i class="fa fa-plus"></i> Add Experience
+      </button>
     </div>
-	</div>
-	<button class="lrBtns lBtn" (click)="goPrev()" *ngIf="!this?.swiper?.animating"
-    [class.inactive] = "this?.swiper?.activeIndex <= 0">
+  </div>
+  <button
+    class="lrBtns lBtn"
+    (click)="goPrev()"
+    *ngIf="!this?.swiper?.animating"
+    [class.inactive]="this?.swiper?.activeIndex <= 0"
+  >
     <i class="fa fa-arrow-left"></i>
   </button>
-	<button class="lrBtns rBtn" (click)="goNext()" *ngIf="!this?.swiper?.animating"
-    [class.inactive]="this?.swiper?.activeIndex >= 2">
+  <button
+    class="lrBtns rBtn"
+    (click)="goNext()"
+    *ngIf="!this?.swiper?.animating"
+    [class.inactive]="this?.swiper?.activeIndex >= 2"
+  >
     <i class="fa fa-arrow-right"></i>
   </button>
 </div>

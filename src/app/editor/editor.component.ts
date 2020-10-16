@@ -109,7 +109,12 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   saveExp() {
     let exp = this.experienceEditItem;
-    if (exp.orgName.trim() === "" || exp.fromDate.trim() === "" || exp.toDate.trim() === "" || exp.details.trim() === "") {
+    if (
+      exp.orgName.trim() === "" ||
+      exp.fromDate.trim() === "" ||
+      exp.toDate.trim() === "" ||
+      exp.details.trim() === ""
+    ) {
       this.expFormValid = false;
     } else {
       this.experienceEdit = false;

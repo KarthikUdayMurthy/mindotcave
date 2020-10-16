@@ -58,10 +58,10 @@ export class CardService implements OnInit {
         skills: [
           { name: "HTML", strength: 80 },
           { name: "CSS", strength: 70 },
-          { name: "Javascript", strength: 70 },
-          { name: "ES6", strength: 90 },
+          { name: "Javascript (ES6)", strength: 80 },
           { name: "Angular", strength: 60 },
-          { name: "React", strength: 50 },
+          { name: "React", strength: 70 },
+          { name: "React Native", strength: 60 },
           { name: "Cordova", strength: 40 },
           { name: "Node", strength: 50 }
         ],
@@ -79,7 +79,7 @@ export class CardService implements OnInit {
             toDate: "NA",
             orgName: "Cognizant",
             details:
-              "Worked on multiple hybrid apps for insurance domain using technologies like Angular, Cordova, IBM MFP etc., My responsibilities include development, unit testing, build and deployment of hybrid apps for multiple countries.",
+              "Worked on multiple hybrid apps for insurance domain using technologies like Angular, React, React Native, Cordova, IBM MFP etc., My responsibilities include development, unit testing, build and deployment of hybrid apps for multiple countries.",
             isRelevant: true
           }
         ]
