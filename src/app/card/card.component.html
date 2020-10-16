@@ -1,103 +1,114 @@
 <div class="cardWrap" [class.showBack]="showBack">
-	<div class="cardInner">
-
-
-		<div class="cardFront">
-			<div class="cardElems hdrElems" id="name" (click)="showDetail('name')">
-				<span class="esis"><i class="fa fa-user-circle-o"></i>&nbsp;
-				{{cardData.fullName}}</span>
-			</div>
-			<div class="cardElems hdrElems" id="title" (click)="showDetail('title')">
-				<span class="esis"><i class="fa fa-briefcase"></i>&nbsp;
-				{{cardData.title}}</span>
-			</div>
-			<div class="cardElems hdrElems" id="email" (click)="showDetail('email')">
-				<span class="esis">{{cardData.email}} &nbsp;
-				<i class="fa fa-envelope"></i></span>
-			</div>
-			<div class="cardElems hdrElems" id="phone" (click)="showDetail('phone')">
-				<span class="esis">{{cardData.phone}} &nbsp;
-				<i class="fa fa-phone"></i></span>
-			</div>
-			<div class="cardElems" id="exp1" (click)="showDetail('exp1')">
-				<div class="expNum">
-					{{getExp('total').y}}<span>y</span>{{getExp('total').m}}<span>m</span>
-				</div>
-				<div class="expText">
-					Total<br>Experience
+  <div class="cardInner">
+    <div class="cardFront" #cardFront>
+      <div class="cardElems hdrElems" id="name" (click)="showDetail('name')">
+        <span class="esis"
+          ><i class="fa fa-user-circle-o"></i>&nbsp; {{cardData.fullName}}</span
+        >
+      </div>
+      <div class="cardElems hdrElems" id="title" (click)="showDetail('title')">
+        <span class="esis"
+          ><i class="fa fa-briefcase"></i>&nbsp; {{cardData.title}}</span
+        >
+      </div>
+      <div class="cardElems hdrElems" id="email" (click)="showDetail('email')">
+        <span class="esis"
+          >{{cardData.email}} &nbsp; <i class="fa fa-envelope"></i
+        ></span>
+      </div>
+      <div class="cardElems hdrElems" id="phone" (click)="showDetail('phone')">
+        <span class="esis"
+          >{{cardData.phone}} &nbsp; <i class="fa fa-phone"></i
+        ></span>
+      </div>
+      <div class="cardElems" id="exp1" (click)="showDetail('exp1')">
+        <div class="expNum">
+          {{getExp('total').y}}<span>y</span>{{getExp('total').m}}<span>m</span>
         </div>
-				</div>
-				<div class="cardElems" id="exp2" (click)="showDetail('exp2')">
-					<div class="expNum">
-						{{getExp('relevant').y}}<span>y</span>{{getExp('relevant').m}}<span>m</span>
-					</div>
-					<div class="expText">
-						Relevant<br>Experience
+        <div class="expText">Total<br />Experience</div>
+      </div>
+      <div class="cardElems" id="exp2" (click)="showDetail('exp2')">
+        <div class="expNum">
+          {{getExp('relevant').y}}<span>y</span>{{getExp('relevant').m}}<span
+            >m</span
+          >
         </div>
-					</div>
-					<div class="cardElems" id="skills" (click)="showDetail('skills')">
-						<div class="subTitle">
-							<i class="fa fa-check"></i>&nbsp;Key Skills
-						</div>
-						<div class="skillWrap">
-							<div class="skillItem" *ngFor="let s of cardData.skills">
-								<div>{{s.name}}</div>
-								<div class="skillStrength">
-									<div [style.width]="s.strength + '%'"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="cardElems" id="orgs">
-						<div class="subTitle">
-							<i class="fa fa-building"></i>&nbsp;Organizations
-						</div>
-						<div class="orgWrap">
-							<div class="orgLink" *ngFor="let org of getOrgs()" (click)="showDetail('orgs', org)">
-								{{org}}
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="cardBack" (click)="showFront()">
-					<div class="detailArea">
-						<div class="cardBackHdr">{{cardbackHdr}}</div>
-						<div class="primaryDetails" *ngIf="cardDetailShow === 'primaryDetails'">
-							<p><i class="fa fa-user-circle-o"></i> &nbsp; {{cardData.fullName}}</p>
-							<p><i class="fa fa-briefcase"></i>&nbsp; {{cardData.title}}</p>
-							<p><i class="fa fa-envelope"></i> &nbsp; {{cardData.email}}</p>
-							<p><i class="fa fa-phone"></i> &nbsp; {{cardData.phone}}</p>
-						</div>
-						<div class="keySkills" *ngIf="cardDetailShow === 'keySkills'">
-							<div class="skillItem" *ngFor="let s of cardData.skills">
-								<div>{{s.name}}</div>
-								<div class="skillStrength">
-									<div [style.width]="s.strength + '%'" [class.keySkillsGreen]="s.strength >= 60"
-										[class.keySkillsAmber]="s.strength >= 45 && s.strength < 60"
-										[class.keySkillsRed]="s.strength < 45"></div>
-								</div>
-								<div class="skillPct">{{s.strength}}%</div>
-							</div>
-						</div>
-						<div class="experience" *ngIf="cardDetailShow === 'experience'">
-              <div class="expItem" *ngFor = "let exp of expDetail">
-                <div class="expItemName">{{exp.orgName}}</div>
-                <div class="expItemDate">{{exp.fromDate | customDate}} - {{exp.toDate | customDate}}</div>
-                <div class="expItemDetail">{{exp.details}}</div>
-              </div>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-
-    <div class="tip" *ngIf="cardServ.showTip">
-      <i class="fa fa-info-circle"></i>&nbsp;
-      <span *ngIf="!showBack">Click any part of the card to show more info.</span>
-      <span *ngIf="showBack">Click anywhere on the card to turn front.</span>
-      <span class="closeBtn" (click) = "this.cardServ.showTip = false"><i class="fa fa-close"></i></span>
+        <div class="expText">Relevant<br />Experience</div>
+      </div>
+      <div class="cardElems" id="skills" (click)="showDetail('skills')">
+        <div class="subTitle"><i class="fa fa-check"></i>&nbsp;Key Skills</div>
+        <div class="skillWrap">
+          <div class="skillItem" *ngFor="let s of cardData.skills">
+            <div>{{s.name}}</div>
+            <div class="skillStrength">
+              <div [style.width]="s.strength + '%'"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cardElems" id="orgs">
+        <div class="subTitle">
+          <i class="fa fa-building"></i>&nbsp;Organizations
+        </div>
+        <div class="orgWrap">
+          <div
+            class="orgLink"
+            *ngFor="let org of getOrgs()"
+            (click)="showDetail('orgs', org)"
+          >
+            {{org}}
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="cardBack" (click)="showFront()">
+      <div class="detailArea">
+        <div class="cardBackHdr">{{cardbackHdr}}</div>
+        <div class="primaryDetails" *ngIf="cardDetailShow === 'primaryDetails'">
+          <p>
+            <i class="fa fa-user-circle-o"></i> &nbsp; {{cardData.fullName}}
+          </p>
+          <p><i class="fa fa-briefcase"></i>&nbsp; {{cardData.title}}</p>
+          <p><i class="fa fa-envelope"></i> &nbsp; {{cardData.email}}</p>
+          <p><i class="fa fa-phone"></i> &nbsp; {{cardData.phone}}</p>
+        </div>
+        <div class="keySkills" *ngIf="cardDetailShow === 'keySkills'">
+          <div class="skillItem" *ngFor="let s of cardData.skills">
+            <div>{{s.name}}</div>
+            <div class="skillStrength">
+              <div
+                [style.width]="s.strength + '%'"
+                [class.keySkillsGreen]="s.strength >= 60"
+                [class.keySkillsAmber]="s.strength >= 45 && s.strength < 60"
+                [class.keySkillsRed]="s.strength < 45"
+              ></div>
+            </div>
+            <div class="skillPct">{{s.strength}}%</div>
+          </div>
+        </div>
+        <div class="experience" *ngIf="cardDetailShow === 'experience'">
+          <div class="expItem" *ngFor="let exp of expDetail">
+            <div class="expItemName">{{exp.orgName}}</div>
+            <div class="expItemDate">
+              {{exp.fromDate | customDate}} - {{exp.toDate | customDate}}
+            </div>
+            <div class="expItemDetail">{{exp.details}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<i (click)="downloadCard()" class="fa fa-download" *ngIf="!showBack"></i>
+<a #downloadLink></a>
+
+<div class="tip" *ngIf="cardServ.showTip">
+  <i class="fa fa-info-circle"></i>&nbsp;
+  <span *ngIf="!showBack">Click any part of the card to show more info.</span>
+  <span *ngIf="showBack">Click anywhere on the card to turn front.</span>
+  <span class="closeBtn" (click)="this.cardServ.showTip = false"
+    ><i class="fa fa-close"></i
+  ></span>
+</div>
